@@ -12,5 +12,5 @@ import java.util.List;
 
 public interface MainView extends IBaseView {
     
-    public void setItems(List<MenuList> items);
+    void setItems(List<MenuList> items);
 }
