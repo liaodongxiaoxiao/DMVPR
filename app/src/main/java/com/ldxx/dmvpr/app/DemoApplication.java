@@ -3,6 +3,7 @@ package com.ldxx.dmvpr.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.ldxx.dmvpr.component.AppComponent;
 import com.ldxx.dmvpr.component.DaggerAppComponent;
 import com.ldxx.dmvpr.module.AppModule;
@@ -18,6 +19,7 @@ public class DemoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fresco.initialize(this);
         setupGraph();
     }
 

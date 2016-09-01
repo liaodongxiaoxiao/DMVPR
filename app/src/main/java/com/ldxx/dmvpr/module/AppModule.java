@@ -1,8 +1,10 @@
 package com.ldxx.dmvpr.module;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.ldxx.dmvpr.app.DemoApplication;
+import com.ldxx.dmvpr.utils.AppUtils;
 
 import javax.inject.Singleton;
 
@@ -22,5 +24,11 @@ public class AppModule {
     @Singleton
     public Application provideApplication() {
         return application;
+    }
+
+    @Provides
+    @Singleton
+    public AppUtils provideAppUtils() {
+        return new AppUtils(application);
     }
 }

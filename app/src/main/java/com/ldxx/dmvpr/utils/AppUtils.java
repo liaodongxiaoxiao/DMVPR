@@ -15,15 +15,17 @@ import com.ldxx.dmvpr.R;
 
 public class AppUtils {
     private static final String TAG = "AppUtils";
+    private Context context;
 
+    public AppUtils(Context context) {
+        this.context = context;
+    }
 
     /**
      * 获取版本名称
-     *
-     * @param context 上下文对象
      * @return 版本号
      */
-    public static String getVersionName(Context context) {
+    public String getVersionName() {
         String versionName = "";
         try {
             PackageManager pm = context.getPackageManager();
@@ -33,10 +35,6 @@ public class AppUtils {
             Log.e("VersionInfo", "Exception", e);
         }
         return versionName;
-    }
-
-    public static String getBaseUrl(Context context) {
-        return context.getResources().getString(R.string.BASE_HOST);
     }
 
 }

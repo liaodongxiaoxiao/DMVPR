@@ -1,11 +1,6 @@
 package com.ldxx.dmvpr.utils;
 
-
-import com.ldxx.dmvpr.app.DemoApplication;
-
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -22,12 +17,11 @@ public class RetrofitManager {
 
     private Retrofit retrofit;
 
-
-    public RetrofitManager(DemoApplication app) {
+    public RetrofitManager(String baseUrl) {
         initOkHttpClient();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(AppUtils.getBaseUrl(app))
+                .baseUrl(baseUrl)
                 .client(mOkHttpClient)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -48,7 +42,7 @@ public class RetrofitManager {
                             .addInterceptor(interceptor)
                             //.addNetworkInterceptor(new StethoInterceptor())
                             .retryOnConnectionFailure(true)
-                            .connectTimeout(15, TimeUnit.SECONDS)
+                            .connectTimeout(30, TimeUnit.SECONDS)
                             .build();
                 }
             }

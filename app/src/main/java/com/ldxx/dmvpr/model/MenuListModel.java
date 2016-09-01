@@ -11,5 +11,5 @@ import java.util.List;
  */
 
 public interface MenuListModel {
-    void getMenus(IBaseRequestCallBack<List<MenuList>> callBack);
+    void getMenus(int page,IBaseRequestCallBack<List<MenuList>> callBack);
 }
