@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DMVPR</string>
+    <string name="str_demo">练习DEMO</string>
+    <string name="loading_more">正在加载更多东西</string>
 </resources>

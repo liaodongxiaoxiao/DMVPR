@@ -45,7 +45,7 @@ public class MenuListModelImpl implements MenuListModel {
 
                     @Override
                     public void onNext(ResultBean<List<MenuList>> bean) {
-                        if (!bean.isStatus()) {
+                        if (!bean.getStatus()) {
                             callBack.requestError(new Exception("null"));
                         } else {
                             callBack.requestSuccess(bean.getTngou());

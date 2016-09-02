@@ -5,12 +5,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.ldxx.dmvpr.BuildConfig;
 import com.ldxx.dmvpr.R;
 import com.ldxx.dmvpr.adapter.MenuListAdapter;
 import com.ldxx.dmvpr.base.BaseActivity;
@@ -63,9 +63,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
-        /*View view = getLayoutInflater().inflate(R.layout.load_more,
+        View view = getLayoutInflater().inflate(R.layout.load_more,
                 (ViewGroup) recycler.getParent(), false);
-        adapter.setLoadingView(view);*/
+        adapter.setLoadingView(view);
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity implements MainView {
         DaggerMainComponent.builder()
                 .appComponent(appComponent)
                 .mainModule(new MainModule(this))
-                .menuListModule(new MenuListModule(BuildConfig.BASE_HOST))
+                .menuListModule(new MenuListModule(this))
                 .build()
                 .inject(this);
     }

@@ -1,5 +1,7 @@
 package com.ldxx.dmvpr.module;
 
+import android.content.Context;
+
 import com.ldxx.dmvpr.api.MenuApi;
 import com.ldxx.dmvpr.model.MenuListModel;
 import com.ldxx.dmvpr.model.impl.MenuListModelImpl;
@@ -14,25 +16,25 @@ import dagger.Provides;
  */
 @Module
 public class MenuListModule {
-    private String baseUrl;
+    private Context context;
 
-    public MenuListModule(String baseUrl) {
-        this.baseUrl = baseUrl;
+    public MenuListModule(Context context) {
+        this.context = context;
     }
 
     @Provides
-    public MenuListModel provideMenuListModel(MenuApi api) {
+    MenuListModel provideMenuListModel(MenuApi api) {
         return new MenuListModelImpl(api);
     }
 
     @Provides
-    public MenuApi provideMyApi(RetrofitManager manager) {
+    MenuApi provideMyApi(RetrofitManager manager) {
         return manager.getService(MenuApi.class);
     }
 
     @Provides
-    public RetrofitManager provideRetrofitManager() {
-        return new RetrofitManager(baseUrl);
+    RetrofitManager provideRetrofitManager() {
+        return new RetrofitManager(context);
     }
 
 }

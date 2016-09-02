@@ -25,12 +25,12 @@ public class MenuListAdapter  extends BaseQuickAdapter<MenuList> {
         baseViewHolder.setText(R.id.menu_name,menuList.getName())
                 .setText(R.id.menu_description,menuList.getDescription())
                 .setText(R.id.menu_keywords,menuList.getKeywords());
-        setImageUri(baseViewHolder,R.id.menu_img,menuList.getImg());
+        setImageUri(baseViewHolder,menuList.getImg());
     }
 
-    private void setImageUri(BaseViewHolder holder,int viewId, String url) {
+    private void setImageUri(BaseViewHolder holder, String url) {
         Uri uri = Uri.parse("http://tnfs.tngou.net/img"+url);
-        SimpleDraweeView view = holder.getView(viewId);
+        SimpleDraweeView view = holder.getView(R.id.menu_img);
         view.setImageURI(uri);
     }
 }

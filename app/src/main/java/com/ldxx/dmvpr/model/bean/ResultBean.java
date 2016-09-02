@@ -18,7 +18,7 @@ public class ResultBean<T> {
     private int total;
     private T tngou;
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

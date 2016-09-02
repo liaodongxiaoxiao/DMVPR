@@ -10,15 +10,16 @@ public class ToastUtil {
 
     private Context mContext;
 
-    public ToastUtil(Context context){
+    public ToastUtil(Context context) {
         this.mContext = context;
     }
 
-    public void showToast(String message){
-        Toast.makeText(mContext,message,Toast.LENGTH_LONG).show();
+    public void showToast(String message) {
+        showToast(message, Toast.LENGTH_LONG);
     }
-    public void showToast(String message,int time){
-        Toast.makeText(mContext,message,time).show();
+
+    public void showToast(String message, int time) {
+        Toast.makeText(mContext, message, time).show();
     }
 
 }

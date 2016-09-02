@@ -1,7 +1,12 @@
 package com.ldxx.dmvpr.utils;
 
+import android.content.Context;
+
+import com.ldxx.dmvpr.BuildConfig;
+
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -17,18 +22,18 @@ public class RetrofitManager {
 
     private Retrofit retrofit;
 
-    public RetrofitManager(String baseUrl) {
-        initOkHttpClient();
+    public RetrofitManager(Context context) {
+        initOkHttpClient(context);
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(BuildConfig.BASE_HOST)
                 .client(mOkHttpClient)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
-    private void initOkHttpClient() {
+    private void initOkHttpClient(Context context) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         if (mOkHttpClient == null) {
@@ -36,13 +41,13 @@ public class RetrofitManager {
                 if (mOkHttpClient == null) {
 
                     mOkHttpClient = new OkHttpClient.Builder()
-                            //.cache(cache)
-                            //.addInterceptor(mRewriteCacheControlInterceptor)
-                            //.addNetworkInterceptor(mRewriteCacheControlInterceptor)
+                            .cache(new Cache(context.getCacheDir(), 1024 * 200))
+                            .addNetworkInterceptor(new CacheInterceptor())
                             .addInterceptor(interceptor)
-                            //.addNetworkInterceptor(new StethoInterceptor())
                             .retryOnConnectionFailure(true)
-                            .connectTimeout(30, TimeUnit.SECONDS)
+                            .connectTimeout(20, TimeUnit.SECONDS)
+                            .readTimeout(20, TimeUnit.SECONDS)
+                            .writeTimeout(30, TimeUnit.SECONDS)
                             .build();
                 }
             }

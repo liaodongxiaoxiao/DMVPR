@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.ldxx.dmvpr.app.DemoApplication;
 import com.ldxx.dmvpr.component.AppComponent;
-import com.ldxx.dmvpr.utils.AppUtils;
-
-import javax.inject.Inject;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
