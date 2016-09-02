@@ -51,7 +51,6 @@ public class MainActivity extends BaseActivity implements MainView {
         ButterKnife.bind(this);
         adapter = new MenuListAdapter(data);
 
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
