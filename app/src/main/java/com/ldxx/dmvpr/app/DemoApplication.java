@@ -9,7 +9,7 @@ import com.ldxx.dmvpr.component.DaggerAppComponent;
 import com.ldxx.dmvpr.module.AppModule;
 
 /**
- * Created by wangzhuo-neu
+ * Created by liaodongxiaoxiao
  * on 2016/8/31.
  */
 

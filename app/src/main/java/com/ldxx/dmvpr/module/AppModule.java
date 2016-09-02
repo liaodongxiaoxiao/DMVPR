@@ -1,10 +1,10 @@
 package com.ldxx.dmvpr.module;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.ldxx.dmvpr.app.DemoApplication;
 import com.ldxx.dmvpr.utils.AppUtils;
+import com.ldxx.dmvpr.utils.ToastUtil;
 
 import javax.inject.Singleton;
 
@@ -30,5 +30,11 @@ public class AppModule {
     @Singleton
     public AppUtils provideAppUtils() {
         return new AppUtils(application);
+    }
+
+    @Provides
+    @Singleton
+    public ToastUtil provideToastUtil() {
+        return new ToastUtil(application);
     }
 }

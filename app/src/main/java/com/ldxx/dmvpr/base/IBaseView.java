@@ -1,17 +1,11 @@
 package com.ldxx.dmvpr.base;
 
 /**
- * Created by wangzhuo-neu
+ * Created by liaodongxiaoxiao
  * on 2016/8/29.
  */
 
 public interface IBaseView<T> {
-    /**
-     * 通过toast提示用户
-     *
-     * @param msg 提示的信息
-     */
-    void toast(String msg);
 
     /**
      * 显示进度

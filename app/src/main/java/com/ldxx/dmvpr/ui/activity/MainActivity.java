@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.ldxx.dmvpr.BuildConfig;
 import com.ldxx.dmvpr.R;
 import com.ldxx.dmvpr.adapter.MenuListAdapter;
@@ -19,6 +22,7 @@ import com.ldxx.dmvpr.module.MenuListModule;
 import com.ldxx.dmvpr.presenter.MainPresenter;
 import com.ldxx.dmvpr.ui.view.MainView;
 import com.ldxx.dmvpr.utils.AppUtils;
+import com.ldxx.dmvpr.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +44,12 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Inject
     AppUtils appUtils;
+    @Inject
+    ToastUtil toastUtil;
 
     MenuListAdapter adapter;
     List<MenuList> data = new ArrayList<>();
+    private int page = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +63,31 @@ public class MainActivity extends BaseActivity implements MainView {
 
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
+        /*View view = getLayoutInflater().inflate(R.layout.load_more,
+                (ViewGroup) recycler.getParent(), false);
+        adapter.setLoadingView(view);*/
+        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                presenter.getMenuList(page);
+            }
+        });
+
+        recycler.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void SimpleOnItemClick(BaseQuickAdapter bAdapter, View view, int position) {
+                toastUtil.showToast(adapter.getData().get(position).getName(), Toast.LENGTH_SHORT);
+            }
+        });
+
+
         Log.e(TAG, "onCreate: " + appUtils.getVersionName());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.onResume();
+        presenter.getMenuList(page);
     }
 
     @Override
@@ -78,12 +103,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void setItems(List<MenuList> items) {
         adapter.addData(items);
-        Log.e(TAG, "setItems: "+adapter.getItemCount() );
-    }
-
-    @Override
-    public void toast(String msg) {
-
+        page++;
     }
 
     @Override
@@ -105,6 +125,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void requestError(Throwable e, int tag) {
-
+        toastUtil.showToast(e.getMessage());
+        progress.setVisibility(View.INVISIBLE);
     }
 }

@@ -6,6 +6,7 @@ import android.app.Application;
 import com.ldxx.dmvpr.app.DemoApplication;
 import com.ldxx.dmvpr.module.AppModule;
 import com.ldxx.dmvpr.utils.AppUtils;
+import com.ldxx.dmvpr.utils.ToastUtil;
 
 import javax.inject.Singleton;
 
@@ -19,4 +20,6 @@ public interface AppComponent {
     Application getApplication();
 
     AppUtils getAppUtils();
+
+    ToastUtil getToastUtil();
 }

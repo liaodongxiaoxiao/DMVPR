@@ -5,11 +5,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.ldxx.dmvpr.R;
-
 
 /**
- * Created by wangzhuo-neu
+ * Created by liaodongxiaoxiao
  * on 2016/8/25.
  */
 

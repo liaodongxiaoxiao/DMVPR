@@ -1,9 +1,8 @@
 package com.ldxx.dmvpr.model.bean;
 
-import java.util.List;
 
 /**
- * Created by wangzhuo-neu
+ * Created by liaodongxiaoxiao
  * on 2016/9/1.
  */
 
