@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -44,7 +43,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @BindView(R.id.progress)
     ProgressBar progress;
     @BindView(R.id.scroll)
-    ScrollView scroll;
+    View scroll;
     @BindView(R.id.menu_keywords)
     TagContainerLayout menuKeywords;
 
