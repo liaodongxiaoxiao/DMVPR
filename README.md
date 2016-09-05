@@ -18,14 +18,14 @@ Dagger2+MVP+Retrofit Demo
     ```
 ### gradle 脚本中常量的定义
 - resValue
-	```java
+    ```java
     //build.gradle
     resValue 'string', 'BASE_HOST', 'http://192.168.1.150:8080/test/service/'
     //java 代码中获取
     context.getResources().getString(R.string.BASE_HOST);
     ```
 - buildConfigField
-	```java
+    ```java
     //build.gradle
     buildConfigField "long", "BUILD_TIME", System.currentTimeMillis()+"L"
     //java 代码中获取
@@ -36,7 +36,7 @@ Dagger2+MVP+Retrofit Demo
      * buildConfigField 定义时需要拼完整串
      * buildConfigField "类型"，"常量名称"，"常量值"
      */
-	```
+    ```
 
 ### 其他点
 - 全屏
@@ -54,7 +54,7 @@ Dagger2+MVP+Retrofit Demo
     }
     ```
 - WebView loadData 中文乱码问题
-	```java
+    ```java
     webView.getSettings().setDefaultTextEncodingName("UTF-8");
     webView.loadData(htmlStr, "text/html; charset=UTF-8", null);
     ```
