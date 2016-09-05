@@ -5,7 +5,7 @@ package com.ldxx.dmvpr.base;
  * on 2016/8/29.
  */
 
-public interface IBaseView<T> {
+public interface IBaseView {
 
     /**
      * 显示进度
@@ -22,12 +22,12 @@ public interface IBaseView<T> {
      *
      * @param data 返回数据
      */
-    void requestSuccess(T data, int tag);
+    //void requestSuccess(T data, int tag);
 
     /**
      * 基础请求的错误
      *
      * @param e 异常信息
      */
-    void requestError(Throwable e, int tag);
+    //void requestError(Throwable e, int tag);
 }

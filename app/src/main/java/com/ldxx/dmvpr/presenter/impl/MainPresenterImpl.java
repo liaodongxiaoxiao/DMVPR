@@ -1,7 +1,7 @@
 package com.ldxx.dmvpr.presenter.impl;
 
 import com.ldxx.dmvpr.base.IBaseRequestCallBack;
-import com.ldxx.dmvpr.model.MenuListModel;
+import com.ldxx.dmvpr.model.MenuModel;
 import com.ldxx.dmvpr.model.bean.MenuList;
 import com.ldxx.dmvpr.presenter.MainPresenter;
 import com.ldxx.dmvpr.ui.view.MainView;
@@ -16,16 +16,16 @@ import java.util.List;
 public class MainPresenterImpl implements MainPresenter, IBaseRequestCallBack<List<MenuList>> {
     private static final String TAG = "MainPresenterImpl";
     private MainView mainView;
-    private MenuListModel menuListModel;
+    private MenuModel menuListModel;
 
-    public MainPresenterImpl(MainView mainView, MenuListModel menuListModel) {
+    public MainPresenterImpl(MainView mainView, MenuModel menuListModel) {
         this.mainView = mainView;
         this.menuListModel = menuListModel;
     }
 
     @Override
     public void getMenuList(int page) {
-        if(page==1){
+        if (page == 1) {
             mainView.showProgress();
         }
         menuListModel.getMenus(page, this);
@@ -33,7 +33,7 @@ public class MainPresenterImpl implements MainPresenter, IBaseRequestCallBack<Li
 
     @Override
     public void requestError(Throwable e) {
-        mainView.requestError(e,0);
+
     }
 
     @Override

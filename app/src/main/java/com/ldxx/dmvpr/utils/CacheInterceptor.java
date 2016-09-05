@@ -8,7 +8,7 @@ import okhttp3.Response;
 
 /**
  * 在服务器不支持缓存时，用的拦截器
- * Created by wangzhuo-neu
+ * Created by liaodongxiaoxiao
  * on 2016/9/2.
  */
 

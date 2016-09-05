@@ -1,6 +1,6 @@
 package com.ldxx.dmvpr.component;
 
-import com.ldxx.dmvpr.model.MenuListModel;
+import com.ldxx.dmvpr.model.MenuModel;
 import com.ldxx.dmvpr.module.MainModule;
 import com.ldxx.dmvpr.module.MenuListModule;
 import com.ldxx.dmvpr.presenter.MainPresenter;
@@ -23,5 +23,5 @@ public interface MainComponent {
 
     MainPresenter getMainPresenter();
 
-    MenuListModel MenuListModel();
+    MenuModel MenuListModel();
 }

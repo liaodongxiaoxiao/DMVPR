@@ -1,5 +1,6 @@
 package com.ldxx.dmvpr.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -76,7 +76,10 @@ public class MainActivity extends BaseActivity implements MainView {
         recycler.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void SimpleOnItemClick(BaseQuickAdapter bAdapter, View view, int position) {
-                toastUtil.showToast(adapter.getData().get(position).getName(), Toast.LENGTH_SHORT);
+                //toastUtil.showToast(adapter.getData().get(position).getName(), Toast.LENGTH_SHORT);
+                Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+                intent.putExtra("id",adapter.getData().get(position).getId());
+                startActivity(intent);
             }
         });
 
@@ -116,16 +119,5 @@ public class MainActivity extends BaseActivity implements MainView {
     public void hideProgress() {
         progress.setVisibility(View.INVISIBLE);
         recycler.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void requestSuccess(Object data, int tag) {
-
-    }
-
-    @Override
-    public void requestError(Throwable e, int tag) {
-        toastUtil.showToast(e.getMessage());
-        progress.setVisibility(View.INVISIBLE);
     }
 }

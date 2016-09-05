@@ -2,7 +2,8 @@ package com.ldxx.dmvpr.model.impl;
 
 import com.ldxx.dmvpr.api.MenuApi;
 import com.ldxx.dmvpr.base.IBaseRequestCallBack;
-import com.ldxx.dmvpr.model.MenuListModel;
+import com.ldxx.dmvpr.model.MenuModel;
+import com.ldxx.dmvpr.model.bean.MenuDetail;
 import com.ldxx.dmvpr.model.bean.MenuList;
 import com.ldxx.dmvpr.model.bean.ResultBean;
 
@@ -19,11 +20,11 @@ import rx.schedulers.Schedulers;
  * 16/8/31.
  */
 
-public class MenuListModelImpl implements MenuListModel {
+public class MenuModelImpl implements MenuModel {
     private MenuApi api;
 
     @Inject
-    public MenuListModelImpl(MenuApi api) {
+    public MenuModelImpl(MenuApi api) {
         this.api = api;
     }
 
@@ -49,6 +50,33 @@ public class MenuListModelImpl implements MenuListModel {
                             callBack.requestError(new Exception("null"));
                         } else {
                             callBack.requestSuccess(bean.getTngou());
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getDetails(String id, final IBaseRequestCallBack<MenuDetail> callBack) {
+        api.getDetail(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<MenuDetail>() {
+                    @Override
+                    public void onCompleted() {
+                        callBack.requestComplete();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callBack.requestError(e);
+                    }
+
+                    @Override
+                    public void onNext(MenuDetail bean) {
+                        if (bean == null) {
+                            callBack.requestError(new Exception("null"));
+                        } else {
+                            callBack.requestSuccess(bean);
                         }
                     }
                 });

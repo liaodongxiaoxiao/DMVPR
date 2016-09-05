@@ -29,8 +29,7 @@ public class MenuListAdapter  extends BaseQuickAdapter<MenuList> {
     }
 
     private void setImageUri(BaseViewHolder holder, String url) {
-        Uri uri = Uri.parse("http://tnfs.tngou.net/img"+url);
         SimpleDraweeView view = holder.getView(R.id.menu_img);
-        view.setImageURI(uri);
+        view.setImageURI(Uri.parse("http://tnfs.tngou.net/img"+url));
     }
 }

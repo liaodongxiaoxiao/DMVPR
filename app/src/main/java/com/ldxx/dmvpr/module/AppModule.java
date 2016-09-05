@@ -13,7 +13,7 @@ import dagger.Provides;
 
 @Module
 public class AppModule {
-
+    private static final String TAG = "AppModule";
     private DemoApplication application;
 
     public AppModule(DemoApplication application) {

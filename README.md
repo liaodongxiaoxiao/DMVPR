@@ -53,6 +53,11 @@ Dagger2+MVP+Retrofit Demo
         ...
     }
     ```
+- WebView loadData 中文乱码问题
+	```java
+    webView.getSettings().setDefaultTextEncodingName("UTF-8");
+    webView.loadData(htmlStr, "text/html; charset=UTF-8", null);
+    ```
 
 
 ## 参考项目

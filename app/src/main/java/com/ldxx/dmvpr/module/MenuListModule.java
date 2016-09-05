@@ -3,8 +3,8 @@ package com.ldxx.dmvpr.module;
 import android.content.Context;
 
 import com.ldxx.dmvpr.api.MenuApi;
-import com.ldxx.dmvpr.model.MenuListModel;
-import com.ldxx.dmvpr.model.impl.MenuListModelImpl;
+import com.ldxx.dmvpr.model.MenuModel;
+import com.ldxx.dmvpr.model.impl.MenuModelImpl;
 import com.ldxx.dmvpr.utils.RetrofitManager;
 
 import dagger.Module;
@@ -23,8 +23,8 @@ public class MenuListModule {
     }
 
     @Provides
-    MenuListModel provideMenuListModel(MenuApi api) {
-        return new MenuListModelImpl(api);
+    MenuModel provideMenuListModel(MenuApi api) {
+        return new MenuModelImpl(api);
     }
 
     @Provides

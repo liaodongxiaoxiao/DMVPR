@@ -24,7 +24,7 @@ public class MenuList {
     private String description;
     private int fcount;
     private String food;
-    private int id;
+    private String id;
     private String images;
     private String img;
     private String keywords;
@@ -63,11 +63,11 @@ public class MenuList {
         this.food = food;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

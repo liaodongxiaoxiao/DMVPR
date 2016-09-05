@@ -3,6 +3,8 @@ package com.ldxx.dmvpr.utils;
 import android.content.Context;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 /**
  * Toast 工具类
  */
@@ -10,6 +12,7 @@ public class ToastUtil {
 
     private Context mContext;
 
+    @Inject
     public ToastUtil(Context context) {
         this.mContext = context;
     }

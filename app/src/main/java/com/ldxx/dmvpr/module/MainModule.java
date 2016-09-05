@@ -1,6 +1,6 @@
 package com.ldxx.dmvpr.module;
 
-import com.ldxx.dmvpr.model.MenuListModel;
+import com.ldxx.dmvpr.model.MenuModel;
 import com.ldxx.dmvpr.presenter.MainPresenter;
 import com.ldxx.dmvpr.presenter.impl.MainPresenterImpl;
 import com.ldxx.dmvpr.ui.view.MainView;
@@ -26,7 +26,7 @@ public class MainModule {
     }
 
     @Provides
-    public MainPresenter providePresenter(MainView mainView, MenuListModel menuListModel) {
+    public MainPresenter providePresenter(MainView mainView, MenuModel menuListModel) {
         return new MainPresenterImpl(mainView, menuListModel);
     }
 }
