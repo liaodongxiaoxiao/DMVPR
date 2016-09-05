@@ -21,17 +21,19 @@ import com.ldxx.dmvpr.module.MenuListModule;
 import com.ldxx.dmvpr.presenter.DetailPresenter;
 import com.ldxx.dmvpr.ui.view.DetailView;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.lujun.androidtagview.TagContainerLayout;
 
 public class DetailActivity extends BaseActivity implements DetailView {
 
     @BindView(R.id.menu_name)
     TextView menuName;
-    @BindView(R.id.menu_url)
-    TextView menuUrl;
     @BindView(R.id.menu_img)
     SimpleDraweeView menuImg;
     @BindView(R.id.menu_step)
@@ -43,6 +45,8 @@ public class DetailActivity extends BaseActivity implements DetailView {
     ProgressBar progress;
     @BindView(R.id.scroll)
     ScrollView scroll;
+    @BindView(R.id.menu_keywords)
+    TagContainerLayout menuKeywords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,8 @@ public class DetailActivity extends BaseActivity implements DetailView {
     public void setDetail(MenuDetail detail) {
         menuName.setText(detail.getName());
         menuImg.setImageURI(Uri.parse("http://tnfs.tngou.net/img" + detail.getImg()));
-        menuUrl.setText(detail.getUrl());
+        List<String> keywords = Arrays.asList( detail.getKeywords().split(" "));
+        menuKeywords.setTags(keywords);
         menuStep.getSettings().setDefaultTextEncodingName("UTF-8");
         menuStep.loadData(detail.getMessage(), "text/html; charset=UTF-8", null);
     }

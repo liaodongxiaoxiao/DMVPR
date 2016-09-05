@@ -55,4 +55,5 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.0.4'
 
     compile 'com.facebook.fresco:fresco:0.13.0'
+    compile 'co.lujun:androidtagview:1.0.3'
 }
